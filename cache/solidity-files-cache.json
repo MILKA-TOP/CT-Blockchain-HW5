@@ -406,8 +406,8 @@
       ]
     },
     "C:\\Users\\MILKA\\Desktop\\DESKTOP_ELEMENTS\\HW\\blockchain\\hw5\\contracts\\MilkaVote.sol": {
-      "lastModificationDate": 1670326328295,
-      "contentHash": "e6112ab8d41d0e68a0ae1ae14c4c60fe",
+      "lastModificationDate": 1670327327019,
+      "contentHash": "fea522898b4d069ba7a48b9327960a9f",
       "sourceName": "contracts/MilkaVote.sol",
       "solcConfig": {
         "version": "0.8.7",

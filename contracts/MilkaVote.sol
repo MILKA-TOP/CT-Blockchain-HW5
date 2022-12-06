@@ -46,31 +46,19 @@ contract MilkaVote {
         emit CreatedProposal(hashId);
     }
 
-    function containsFreeProps() public view returns (bool) {
-        for (uint i = 0; i < 3; i++) { // try return index
-            if (!propArray[i].status) return true;         
-        }
-        return false;
-    }
-
-    function _getFreeProposal(uint256 hashId) public returns (int256) {
-        for (uint i = 0; i < 3; i++) { // try cleaning
-            _timeCheck(i);         
-        }
-        for (uint i = 0; i < 3; i++) { // try return index
-            if (!propArray[i].status) return int256(i);         
-        }
-
-        emit DisableProposal(hashId);
-        return -1;
-    }
-
     function makeAgreeVotes(uint256 hashId) public {
         _makeVote(hashId, true);
     }
 
     function makeRejectVotes(uint256 hashId) public {
         _makeVote(hashId, false);
+    }
+
+    function containsFreeProps() public view returns (bool) {
+        for (uint i = 0; i < 3; i++) { // try return index
+            if (!propArray[i].status) return true;         
+        }
+        return false;
     }
 
     function _makeVote(uint256 hashId, bool isAgreeVotes) private {
@@ -89,6 +77,18 @@ contract MilkaVote {
         propArray[propIndex].users[msg.sender] = hashId;
 
         _checkVotesCount(propIndex);
+    }
+
+    function _getFreeProposal(uint256 hashId) public returns (int256) {
+        for (uint i = 0; i < 3; i++) { // try cleaning
+            _timeCheck(i);         
+        }
+        for (uint i = 0; i < 3; i++) { // try return index
+            if (!propArray[i].status) return int256(i);         
+        }
+
+        emit DisableProposal(hashId);
+        return -1;
     }
 
     // Return true, if emmited
